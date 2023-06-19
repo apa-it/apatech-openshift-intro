@@ -14,14 +14,12 @@ spec:
     spec:
       containers:
       - name: ex06-nginx-container
-        image: registry.redhat.io/ubi8/nginx-120
-        command: ["nginx"]
-        args: ["-g", "daemon off;"]
+        image: nginxinc/nginx-unprivileged:stable-alpine
         volumeMounts:
         - name: wwwdata-volume
-          mountPath: /opt/app-root/src
+          mountPath: /usr/share/nginx/html
         ports:
-        - name: http-default
+        - name: http-default 
           containerPort: 8080
       volumes:
       - name: wwwdata-volume
