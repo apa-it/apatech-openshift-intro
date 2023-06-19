@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex06-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex06-app
+  template:
+    metadata:
+      labels:
+        app: ex06-app
+    spec:
+      containers:
+      - name: ex06-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]
+        volumeMounts:
+        - name: wwwdata-volume
+          mountPath: /opt/app-root/src
+        ports:
+        - name: http-default
+          containerPort: 8080
+      volumes:
+      - name: wwwdata-volume
+        configMap:
+          name: ex06-config

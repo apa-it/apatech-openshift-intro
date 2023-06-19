@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ex05-config
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <title>
+      OpenShift Demo
+    </title>
+    <body>
+      <h1>Hello OpenShift!</h1>
+    </body>

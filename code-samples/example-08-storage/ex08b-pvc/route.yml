@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex08b-route
+  annotations:
+    haproxy.router.openshift.io/disable_cookies: "true"
+spec:
+  host: ex08b.salesdemo.ocpqa.apa.net
+  path: /
+  to:
+    kind: Service
+    name: ex08b-service
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect  

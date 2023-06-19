@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ex02b-config
+data:
+  DEMO_HELLO: "Hello ConfigMap"
+  DEMO_FOO: "bar"

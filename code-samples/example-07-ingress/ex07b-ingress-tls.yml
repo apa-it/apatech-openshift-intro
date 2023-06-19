@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ex07b-ingress-tls
+spec:
+  rules:
+  - host: ex07b.salesdemo.ocpqa.apa.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ex07-service
+            port:
+              name: web
+  tls:
+  - {}    # use default cert (OpenShift specific syntax)

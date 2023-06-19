@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex08b-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ex08b-app
+  template:
+    metadata:
+      labels:
+        app: ex08b-app
+    spec:
+      containers:
+      - name: ex08b-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]
+        volumeMounts:
+        - name: wwwdata-volume
+          mountPath: /opt/app-root/src
+      volumes:
+      - name: wwwdata-volume
+        persistentVolumeClaim:
+          claimName: ex08b-pvc

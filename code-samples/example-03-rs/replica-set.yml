@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ex03-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex03-app
+  template:
+    metadata:
+      labels:
+        app: ex03-app
+    spec:
+      containers:
+      - name: ex03-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]

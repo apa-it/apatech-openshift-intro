@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex05-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex05-app
+  template:
+    metadata:
+      labels:
+        app: ex05-app
+    spec:
+      containers:
+      - name: ex05-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]
+        volumeMounts:
+        - name: wwwdata-volume
+          mountPath: /opt/app-root/src
+      volumes:
+      - name: wwwdata-volume
+        configMap:
+          name: ex05-config

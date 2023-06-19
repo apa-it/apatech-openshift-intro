@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ex07a-ingress
+spec:
+  rules:
+  - host: ex07a.salesdemo.ocpqa.apa.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ex07-service
+            port:
+              name: web

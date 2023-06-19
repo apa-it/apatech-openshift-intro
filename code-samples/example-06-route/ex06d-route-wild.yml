@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex06d-route-wild
+  annotations:
+    haproxy.router.openshift.io/disable_cookies: "true"
+    haproxy.router.openshift.io/rewrite-target: "/"
+    # full list of available annotations:
+    # https://docs.openshift.com/container-platform/4.11/networking/routes/route-configuration.html#nw-route-specific-annotations_route-configuration
+spec:
+  host: dummy.salesdemo.ocpqa.apa.net
+  wildcardPolicy: Subdomain
+  path: /app
+  to:
+    kind: Service
+    name: ex06-service
+  port:
+    targetPort: web
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect  

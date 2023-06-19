@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex04-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex04-app
+  template:
+    metadata:
+      labels:
+        app: ex04-app
+    spec:
+      containers:
+      - name: ex04-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]

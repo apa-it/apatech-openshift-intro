@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ex08a-pod
+spec:
+  containers:
+  - name: ex08a-container
+    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+    command: ["sleep"]
+    args: ["60s"]
+    volumeMounts:
+    - mountPath: /example
+      name: ex08a-volume
+  volumes:
+  - name: ex08a-volume
+    emptyDir:
+      sizeLimit: 1Gi

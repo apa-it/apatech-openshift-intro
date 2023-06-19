@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex06b-route-tls
+spec:
+  host: ex06b.salesdemo.ocpqa.apa.net
+  path: /
+  to:
+    kind: Service
+    name: ex06-service
+  port:
+    targetPort: web
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect  
