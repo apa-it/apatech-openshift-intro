@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ex10-cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: ex10-app
+        spec:
+          containers:
+          - name: ex10-container
+            image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+            command: ["/bin/sh"]
+            args: ["-c", "date; echo 'Hello CronJob!'"]
+            env:
+            - name: TZ
+              value: "Europe/Vienna"
+          restartPolicy: OnFailure
