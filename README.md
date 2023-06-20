@@ -10,3 +10,4 @@
 6. [Route](code-samples/example-06-route/)
 7. [Ingress](code-samples/example-07-ingress/)
 8. [Storage](code-samples/example-08-storage/)
+9. [Secret](code-samples/example-09-secret/)
