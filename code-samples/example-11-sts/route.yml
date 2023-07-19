@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex11-route
+  annotations:
+    haproxy.router.openshift.io/disable_cookies: "true"
+spec:
+  host: ex11.salesdemo.ocpqa.apa.net
+  path: /
+  to:
+    kind: Service
+    name: ex11-service
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect  

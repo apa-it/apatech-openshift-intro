@@ -12,3 +12,4 @@
 8. [Storage](code-samples/example-08-storage/)
 9. [Secret](code-samples/example-09-secret/)
 10. [CronJob](code-samples/example-10-cronjob/)
+11. [StatefulSet](code-samples/example-11-sts/)

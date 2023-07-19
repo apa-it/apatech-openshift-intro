@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ex11-sts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex11-app
+  serviceName: ex11-service
+  volumeClaimTemplates:
+  - metadata:
+      name: ex11-pvc
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+  template:
+    metadata:
+      labels:
+        app: ex11-app
+    spec:
+      # setHostnameAsFQDN: true
+      containers:
+      - name: ex11-nginx-container
+        image: registry.redhat.io/ubi8/nginx-120
+        command: ["nginx"]
+        args: ["-g", "daemon off;"]
+        ports:
+        - name: http-default
+          containerPort: 8080
+        volumeMounts:
+        - name: ex11-pvc
+          mountPath: /opt/app-root/src
