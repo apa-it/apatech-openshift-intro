@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex12-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ex12-app
+  template:
+    metadata:
+      labels:
+        app: ex12-app
+    spec:
+      volumes:
+        - name: wwwdata-volume
+          emptyDir:
+            sizeLimit: 1Gi
+
+      # initialize the Pod by creating example web content with the hostname
+      initContainers:
+      - name: ex12-init-container
+        image: busybox
+        volumeMounts:
+        - name: wwwdata-volume
+          mountPath: /usr/share/nginx/html
+        command: ["/bin/sh", "-c", "hostname > /usr/share/nginx/html/index.html"]
+
+      containers:
+      - name: ex12-container
+        image: nginxinc/nginx-unprivileged:stable-alpine
+        volumeMounts:
+        - name: wwwdata-volume
+          mountPath: /usr/share/nginx/html
+        ports:
+        - name: http-default 
+          containerPort: 8080
+
+        # probes - manually create and delete the probe files using oc rsh to observe probe behavior
+        startupProbe:
+          exec:
+            command: ["cat", "/tmp/alive"]
+          periodSeconds: 10
+          failureThreshold: 3
+        livenessProbe:
+          exec:
+            command: ["cat", "/tmp/alive"]
+          periodSeconds: 5
+          failureThreshold: 2
+        readinessProbe:
+          exec:
+            command: ["cat", "/tmp/ready"]
+          periodSeconds: 5
+          failureThreshold: 2
