@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ex09-pod
+spec:
+  containers:
+  - name: ex09-container
+    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+    command: ["sleep"]
+    args: ["4h"]
+    volumeMounts:
+      - name: secret-volume
+        mountPath: /etc/ex09/secret
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: ex09-secret
