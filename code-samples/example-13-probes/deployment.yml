@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ex12-deployment
+  name: ex13-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ex12-app
+      app: ex13-app
   template:
     metadata:
       labels:
-        app: ex12-app
+        app: ex13-app
     spec:
       volumes:
         - name: wwwdata-volume
@@ -19,7 +19,7 @@ spec:
 
       # initialize the Pod by creating example web content with the hostname
       initContainers:
-      - name: ex12-init-container
+      - name: ex13-init-container
         image: busybox
         volumeMounts:
         - name: wwwdata-volume
@@ -27,7 +27,7 @@ spec:
         command: ["/bin/sh", "-c", "hostname > /usr/share/nginx/html/index.html"]
 
       containers:
-      - name: ex12-container
+      - name: ex13-container
         image: nginxinc/nginx-unprivileged:stable-alpine
         volumeMounts:
         - name: wwwdata-volume

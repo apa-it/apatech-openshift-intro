@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ex12-service
+  name: ex13-service
 spec:
   selector:
-    app: ex12-app
+    app: ex13-app
   ports:
     - name: web
       port: 80

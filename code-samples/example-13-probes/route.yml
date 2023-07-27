@@ -1,15 +1,15 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: ex12-route
+  name: ex13-route
   annotations:
     haproxy.router.openshift.io/disable_cookies: "true" 
 spec:
-  host: ex12.salesdemo.ocpqa.apa.net
+  host: ex13.salesdemo.ocpqa.apa.net
   path: /
   to:
     kind: Service
-    name: ex12-service
+    name: ex13-service
   port:
     targetPort: web
   tls:

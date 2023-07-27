@@ -13,4 +13,5 @@
 9. [Secret](code-samples/example-09-secret/)
 10. [CronJob](code-samples/example-10-cronjob/)
 11. [StatefulSet](code-samples/example-11-sts/)
-12. [Probes](code-samples/example-12-probes/)
+12. [RestartPolicy](code-samples/example-12-restartpolicy/)
+13. [Probes](code-samples/example-13-probes/)
