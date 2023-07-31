@@ -15,3 +15,4 @@
 11. [StatefulSet](code-samples/example-11-sts/)
 12. [RestartPolicy](code-samples/example-12-restartpolicy/)
 13. [Probes](code-samples/example-13-probes/)
+14. [Metrics](code-samples/example-14-metrics/)

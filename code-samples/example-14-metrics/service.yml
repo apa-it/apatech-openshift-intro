@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ex14-service
+  labels:
+    app: ex14-app
+spec:
+  selector:
+    app: ex14-app
+  ports:
+    - name: api
+      port: 80
+      targetPort: http-default

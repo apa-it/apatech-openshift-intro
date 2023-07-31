@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex14-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ex14-app
+  template:
+    metadata:
+      labels:
+        app: ex14-app
+    spec:
+      containers:
+      - name: ex14-container
+        image: quay.io/prometheuscommunity/avalanche:main
+        args:
+          - --metric-count=5
+          - --series-count=1
+          - --label-count=0
+          - --value-interval=15
+          - --series-interval=86400
+          - --metric-interval=86400
+          - --port=9001
+        ports:
+        - name: http-default 
+          containerPort: 9001

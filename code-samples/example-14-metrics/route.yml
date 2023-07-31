@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex14-route
+  annotations:
+    haproxy.router.openshift.io/disable_cookies: "true" 
+spec:
+  host: ex14.salesdemo.ocpqa.apa.net
+  path: /
+  to:
+    kind: Service
+    name: ex14-service
+  port:
+    targetPort: web

@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ex14-monitor
+spec:
+  endpoints:
+    - interval: 15s
+      path: /metrics
+      port: api                     # name or number of the Service port
+      # targetPort: http-default    # name or number of the Pod port
+      scheme: http
+  selector:
+    matchLabels:
+      app: ex14-app                 # matches a Service (not Pods!)
