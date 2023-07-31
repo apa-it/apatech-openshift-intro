@@ -4,6 +4,7 @@ metadata:
   name: ex10-cronjob
 spec:
   schedule: "* * * * *"
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
