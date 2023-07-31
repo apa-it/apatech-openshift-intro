@@ -1,0 +1,23 @@
+resources:
+- deployment.yml
+
+namePrefix: demo-
+
+nameSuffix: "-007"
+
+commonLabels:
+  foo: bar
+
+configMapGenerator:
+
+# A ConfigMap with one key, embedding a properties file
+- name: ex15-properties
+  files:
+  - ex15.properties
+
+# A ConfigMap with multiple keys for setting environment variables
+- name: ex15-env
+  envs:
+  - ex15.env
+  literals:
+  - APP_FILESTORE_DIRECTORY=/var/demo

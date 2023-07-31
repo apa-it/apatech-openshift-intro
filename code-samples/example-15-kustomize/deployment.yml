@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex15-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ex15-app
+  template:
+    metadata:
+      labels:
+        app: ex15-app
+    spec:
+      containers:
+      - name: ex15-container
+        image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+        command: ["sleep"]
+        args: ["4h"]
+        envFrom:
+        - configMapRef:
+            name: ex15-env
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/demo
+      volumes:
+      - name: config-volume
+        configMap:
+          name: ex15-properties
