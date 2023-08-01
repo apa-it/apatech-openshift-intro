@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex16a-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ex16a-app
+  template:
+    metadata:
+      labels:
+        app: ex16a-app
+    spec:
+      affinity:
+        podAntiAffinity:              # also try podAffinity
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100               # if you have more rules and they are conflicting, then the rule with the higher weight wins
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app                            # key of the peer Pod's label
+                  operator: In
+                  values:
+                  - ex16a-app                         # value of the peer Pod's label
+              topologyKey: kubernetes.io/hostname     # denote our domains by Node labels with this key
+      containers:
+      - name: ex16a-container
+        image: nginxinc/nginx-unprivileged:stable-alpine

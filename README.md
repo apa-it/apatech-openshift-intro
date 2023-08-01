@@ -17,3 +17,4 @@
 13. [Probes](code-samples/example-13-probes/)
 14. [Metrics](code-samples/example-14-metrics/)
 15. [Kustomize](code-samples/example-15-kustomize/)
+16. [Pod affinity](code-samples/example-16-affinity/)

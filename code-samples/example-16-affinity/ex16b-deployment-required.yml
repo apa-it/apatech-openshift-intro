@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex16b-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ex16b-app
+  template:
+    metadata:
+      labels:
+        app: ex16b-app
+    spec:
+      affinity:
+        podAntiAffinity:                # also try podAffinity
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app                            # key of the peer Pod's label
+                operator: In
+                values:
+                - ex16b-app                         # value of the peer Pod's label
+            topologyKey: kubernetes.io/hostname     # denote our domains by Node labels with this key
+      containers:
+      - name: ex16b-container
+        image: nginxinc/nginx-unprivileged:stable-alpine
