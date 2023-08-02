@@ -16,7 +16,7 @@ spec:
           - name: ex10-container
             image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
             command: ["/bin/sh"]
-            args: ["-c", "date; echo 'Hello CronJob!'"]
+            args: ["-c", "date; echo 'Hello CronJob!'; sleep 5s; date; echo 'Good bye CronJob!'"]
             env:
             - name: TZ
               value: "Europe/Vienna"
