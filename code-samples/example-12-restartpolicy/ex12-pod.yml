@@ -8,5 +8,5 @@ spec:
   - name: ex12-container
     image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.15
     command: ["/bin/sh"]
-    args: ["-c", "sleep 5s; exit 42"]
+    args: ["-c", "echo 'Sleeping ...'; sleep 5s; echo 'No good!'; exit 42"]
 
