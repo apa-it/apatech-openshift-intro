@@ -1,21 +1,21 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ex01c-multi-container-pod
+  name: ex01b-multi-container-pod
 spec:
 
   containers:
   
-  - name: ex01c-nginx-container
-    image: registry.redhat.io/ubi8/nginx-120
+  - name: ex01b-nginx-container
+    image: registry.redhat.io/ubi9/nginx-124
     command: ["nginx"]
     args: ["-g", "daemon off;"]
     volumeMounts:
     - mountPath: /opt/app-root/src
       name: wwwdata-volume
 
-  - name: ex01c-tools-container
-    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+  - name: ex01b-tools-container
+    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.15
     command: ["sleep"]
     args: ["4h"]
     volumeMounts:
