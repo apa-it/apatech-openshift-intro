@@ -25,7 +25,7 @@ spec:
       # setHostnameAsFQDN: true
       containers:
       - name: ex11-nginx-container
-        image: registry.redhat.io/ubi8/nginx-120
+        image: registry.redhat.io/ubi9/nginx-124
         command: ["nginx"]
         args: ["-g", "daemon off;"]
         ports:

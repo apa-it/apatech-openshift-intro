@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: ex02b-container
-    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.12
+    image: registry.redhat.io/openshift4/ose-tools-rhel8:v4.15
     command: ["sleep"]
     args: ["4h"]
     envFrom:
