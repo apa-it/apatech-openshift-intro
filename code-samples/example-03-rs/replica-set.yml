@@ -12,7 +12,6 @@ spec:
       labels:
         app: ex03-app
     spec:
-      restartPolicy: Never
       containers:
       - name: ex03-nginx-container
         image: registry.redhat.io/ubi8/nginx-120
