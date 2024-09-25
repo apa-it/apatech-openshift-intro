@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ex10-job
+spec:
+  completions: 4
+  parallelism: 2
+  template:
+    metadata:
+      name: ex10-pod
+    spec:
+      containers:
+        - name: ex10-container
+          image: busybox
+          command:
+            - "/bin/sh"
+            - "-c"
+            - "exit $((RANDOM % 2))"
+      restartPolicy: Never
