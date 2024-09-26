@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex15-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: ex15-container
+          image: nginxinc/nginx-unprivileged:1.26.2-alpine  # pin image version for PROD
+          resources:                                        # set resource limits and requests for PROD
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "500m"
+              memory: "500Mi"

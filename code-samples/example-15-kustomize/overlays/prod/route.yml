@@ -1,0 +1,6 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ex15-route
+spec:
+  host: ex15-prod.salesdemo.ocpqa.apa.net     # set the hostname for PROD

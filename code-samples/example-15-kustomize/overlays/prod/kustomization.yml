@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+
+commonLabels:
+  stage: prod
+
+patches:
+  - path: deployment.yml
+  - path: route.yml

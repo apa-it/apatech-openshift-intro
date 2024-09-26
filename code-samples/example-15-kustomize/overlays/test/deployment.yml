@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex15-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: ex15-container
+          resources:             # set resource limits and requests for TEST
+            limits:
+              cpu: "500m"
+              memory: "600Mi"
+            requests:
+              cpu: "250m"
+              memory: "300Mi"

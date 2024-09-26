@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+
+commonLabels:
+  stage: test
+
+patches:
+  - path: deployment.yml
+  - path: route.yml
