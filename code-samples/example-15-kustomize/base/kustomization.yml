@@ -4,7 +4,6 @@ resources:
 - route.yml
 
 configMapGenerator:
-
 # A ConfigMap with multiple keys for setting environment variables
 - name: ex15-env
   envs:
@@ -12,10 +11,3 @@ configMapGenerator:
   literals:
   - PROVIDER=APA-Tech
   - ANSWER=42
-
-# A ConfigMap with one key, embedding a properties file
-- name: ex15-wwwdata
-  files:
-  - index.html
-
-

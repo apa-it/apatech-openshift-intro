@@ -7,3 +7,9 @@ commonLabels:
 patches:
   - path: deployment.yml
   - path: route.yml
+
+configMapGenerator:
+# A ConfigMap with one key, embedding a file
+- name: ex15-wwwdata
+  files:
+  - index.html
