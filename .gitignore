@@ -1,2 +1,5 @@
 ### VS Code ###
 .vscode/
+
+### JetBrains IDEs ###
+.idea/
