@@ -16,7 +16,8 @@ spec:
       - name: ex14-container
         image: quay.io/prometheuscommunity/avalanche:main
         args:
-          - --metric-count=5
+          - --gauge-metric-count=5
+          - --counter-metric-count=5
           - --series-count=1
           - --label-count=0
           - --value-interval=15
