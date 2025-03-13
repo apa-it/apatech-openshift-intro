@@ -1,8 +1,9 @@
 resources:
   - ../../base
 
-commonLabels:
-  stage: test
+labels:
+  - pairs:
+      stage: test
 
 patches:
   - path: deployment.yml

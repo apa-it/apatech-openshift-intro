@@ -1,8 +1,9 @@
 resources:
   - ../../base
 
-commonLabels:
-  stage: prod
+labels:
+  - pairs:
+      stage: prod
 
 patches:
   - path: deployment.yml
